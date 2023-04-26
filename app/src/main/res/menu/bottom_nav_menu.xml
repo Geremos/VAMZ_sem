@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/filmyFragment"
+        android:title="filmy"
+        android:icon="@drawable/icon_home"
+        />
+
+    <item
+        android:id="@+id/myListFragment"
+        android:title="mylist"
+        android:icon="@drawable/icon_mylist"/>
+
+    <item
+        android:id="@+id/historyFraagment"
+        android:title="history"
+        android:icon="@drawable/icon_history"/>
+
+    <item
+        android:id="@+id/accountFragment"
+        android:title="account"
+        android:icon="@drawable/icon_account"/>
+
+</menu>
