@@ -16,7 +16,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
         vytvorFilmy()
         binding= ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -35,7 +34,7 @@ class MainActivity : AppCompatActivity() {
             "Set more than a decade after the events of the first film, learn the story of the Sully family (Jake, Neytiri, and their kids), the trouble that follows them, the lengths they go to keep each other safe, the battles they fight to stay alive, and the tragedies they endure."
         )
         filmList.add(film1)
-
+        Log.d("FilmDataNapln","DataZfilmu ${filmList.get(0)}")
         var film2 = FilmyData("How to Train Your Dragon",
             R.drawable.howtotrainyourdrgon1,
             listOf("Chris Sanders"),
