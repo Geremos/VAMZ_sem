@@ -1,6 +1,6 @@
 package com.example.vamz_sem
 
-var filmList = mutableListOf<FilmyData>()
+var filmList = ArrayList<FilmyData>()
 
 data class FilmyData(
     var title : String?,
