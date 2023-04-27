@@ -1,4 +1,4 @@
-package com.example.vamz_sem.Filmy
+package com.example.vamz_sem.filmy
 
 import androidx.lifecycle.ViewModel
 

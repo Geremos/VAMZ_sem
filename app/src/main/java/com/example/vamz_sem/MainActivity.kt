@@ -4,14 +4,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.get
 import androidx.navigation.NavController
-import androidx.navigation.NavGraph
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI.setupWithNavController
-import com.example.vamz_sem.Filmy.FilmyData
-import com.example.vamz_sem.Filmy.GlobalViewModel
-import com.example.vamz_sem.Filmy.filmList
+import com.example.vamz_sem.filmy.FilmyData
+import com.example.vamz_sem.filmy.GlobalViewModel
+import com.example.vamz_sem.filmy.filmList
 import com.example.vamz_sem.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -27,7 +25,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         navController=Navigation.findNavController(this,R.id.activity_main_nav_host_fragment)
         setupWithNavController(binding.bottomNavigationView,navController)
-
     }
 
     private fun vytvorFilmy() {
