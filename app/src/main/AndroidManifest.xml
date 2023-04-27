@@ -12,7 +12,7 @@
         android:theme="@style/theme"
         tools:targetApi="31" >
         <activity
-            android:name=".Filmy_Detail"
+            android:name=".Filmy.FilmyDetailActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

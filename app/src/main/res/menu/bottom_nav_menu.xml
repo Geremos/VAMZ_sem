@@ -13,7 +13,7 @@
         android:icon="@drawable/icon_mylist"/>
 
     <item
-        android:id="@+id/historyFraagment"
+        android:id="@+id/historyFragment"
         android:title="history"
         android:icon="@drawable/icon_history"/>
 

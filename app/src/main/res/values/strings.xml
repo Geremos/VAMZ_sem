@@ -8,4 +8,5 @@
     <string name="image_detail">image_detail</string>
     <string name="writers_holder" />
     <string name="cast_holder" />
+    <string name="back_icon" />
 </resources>

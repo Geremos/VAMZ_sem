@@ -1,7 +1,7 @@
-package com.example.vamz_sem
+package com.example.vamz_sem.Filmy
 
 var filmList = ArrayList<FilmyData>()
-
+const val EXTRA_FILM = "extraFilm"
 data class FilmyData(
     var title : String?,
     var filmImage: Int?,
