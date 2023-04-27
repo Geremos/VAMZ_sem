@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout>
+    <data>
+        <variable
+            name="clickListener"
+            type="com.example.vamz_sem.Filmy.FilmDetailClickListener" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".Filmy.FilmyDetailActivity">
+
+
+        <ImageView
+            android:id="@+id/back_icon"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:contentDescription="@string/back_icon"
+            android:onClick="@{()->clickListener.goBack()}"
+            android:src="@drawable/icon_back"
+            app:layout_con="@+id/top_line"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/image_detail_id"
+            android:layout_width="wrap_content"
+            android:layout_height="285dp"
+            android:contentDescription="@string/image_detail"
+            android:maxWidth="190dp"
+            android:maxHeight="250dp"
+            android:src="@drawable/avatar2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/top_line" />
+
+        <View
+            android:id="@+id/top_line"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/buttons"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/back_icon" />
+
+        <TextView
+            android:id="@+id/title_detail_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:gravity="center"
+            android:lines="2"
+            android:text="@string/title_holder"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/image_detail_id" />
+
+        <TextView
+            android:id="@+id/director_detail_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:gravity="start"
+            android:lines="2"
+            android:text="@string/director_holder"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title_detail_id" />
+
+        <TextView
+            android:id="@+id/writers_detail_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:gravity="start"
+            android:lines="3"
+            android:text="@string/writers_holder"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/director_detail_id" />
+
+        <TextView
+            android:id="@+id/cast_detail_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:gravity="start"
+            android:lines="5"
+            android:text="@string/cast_holder"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/writers_detail_id" />
+
+        <TextView
+            android:id="@+id/plot_detail_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:gravity="start"
+            android:lines="15"
+            android:text="@string/cast_holder"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cast_detail_id" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+
