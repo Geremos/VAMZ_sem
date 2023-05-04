@@ -1,6 +1,8 @@
 package com.example.vamz_sem.filmy
 
 var filmList = ArrayList<FilmyData>()
+var myList = ArrayList<FilmyData>()
+var history = ArrayList<FilmyData>()
 data class FilmyData(
     var title : String?,
     var filmImage: Int?,

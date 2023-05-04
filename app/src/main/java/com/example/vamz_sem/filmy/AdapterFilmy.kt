@@ -25,11 +25,6 @@ class AdapterFilmy(
         holder.bindFilm(filmy[position])
     }
 
-    @SuppressLint("NotifyDataSetChanged")
-    fun updateDataSet(dataSet: List<FilmyData>) {
-        this.filmy = dataSet
-        notifyDataSetChanged()
-    }
 }
 
 class FilmViewHolder(
@@ -41,8 +36,9 @@ class FilmViewHolder(
         //film.filmImage?.let { filmBinding.imageId.setImageResource(it) }
         filmBinding.cardViewFilmyId.setOnClickListener {
             globalViewModel.globalFilmData = film
-
             Log.d("logFilmData","${globalViewModel.globalFilmData}")
+            Log.d("logBackFragmentId","${globalViewModel.backFragmentId}")
+            globalViewModel.backFragmentId = R.id.filmyFragment
             it.findNavController().navigate(R.id.filmyDetailFragment)
         }
 
