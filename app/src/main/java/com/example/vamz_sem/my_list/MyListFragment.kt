@@ -4,22 +4,38 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModel
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.vamz_sem.BaseFragment
 import com.example.vamz_sem.R
+import com.example.vamz_sem.databinding.FragmentHistoryBinding
+import com.example.vamz_sem.databinding.FragmentMyListBinding
+import com.example.vamz_sem.filmy.myList
 
 
-class MyListFragment : Fragment() {
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+class MyListFragment : BaseFragment<FragmentMyListBinding, MyListFragmentViewModel>() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_my_list, container, false)
+    ): View {
+        binding = FragmentMyListBinding.inflate(layoutInflater)
+        return binding.root
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        AdapterMyList(myList, globalViewModel).apply {
+            binding.myListRecycler.layoutManager =
+                LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+            binding.myListRecycler.adapter = this
+        }
+    }
+
+    override fun getViewModel(): Class<MyListFragmentViewModel> =
+        MyListFragmentViewModel::class.java
+
+    override fun getFragmentView(): Int = R.id.myListFragment
 }
+
+class MyListFragmentViewModel() : ViewModel()

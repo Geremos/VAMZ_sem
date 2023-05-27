@@ -9,4 +9,8 @@
     <string name="writers_holder" />
     <string name="cast_holder" />
     <string name="back_icon" />
+    <string name="mylist">MyList</string>
+    <string name="no_results">No Results</string>
+    <string name="filter_menu">Filter menu</string>
+    <string name="search_button">Search Button</string>
 </resources>

@@ -4,13 +4,14 @@ import android.annotation.SuppressLint
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.lifecycle.LiveData
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vamz_sem.R
 import com.example.vamz_sem.databinding.FilmObrItemBinding
 
 class AdapterFilmy(
-    var filmy: List<FilmyData>,
+    var filmy: ArrayList<FilmyData>,
     var globalViewModel: GlobalViewModel
 )
     : RecyclerView.Adapter<FilmViewHolder>() {
@@ -22,7 +23,7 @@ class AdapterFilmy(
 
     override fun getItemCount(): Int = filmy.size
     override fun onBindViewHolder(holder: FilmViewHolder, position: Int) {
-        holder.bindFilm(filmy[position])
+        filmy.let { holder.bindFilm(it[position]) }
     }
 
 }
@@ -33,11 +34,8 @@ class FilmViewHolder(
 ) : RecyclerView.ViewHolder(filmBinding.root) {
     fun bindFilm(film: FilmyData) {
         filmBinding.imageId.setImageResource(film.filmImage!!)
-        //film.filmImage?.let { filmBinding.imageId.setImageResource(it) }
         filmBinding.cardViewFilmyId.setOnClickListener {
             globalViewModel.globalFilmData = film
-            Log.d("logFilmData","${globalViewModel.globalFilmData}")
-            Log.d("logBackFragmentId","${globalViewModel.backFragmentId}")
             globalViewModel.backFragmentId = R.id.filmyFragment
             it.findNavController().navigate(R.id.filmyDetailFragment)
         }
