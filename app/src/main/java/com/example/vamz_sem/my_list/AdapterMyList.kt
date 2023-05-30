@@ -1,8 +1,10 @@
 package com.example.vamz_sem.my_list
 
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.lifecycle.MutableLiveData
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vamz_sem.R
@@ -24,6 +26,12 @@ class AdapterMyList(
 
     override fun onBindViewHolder(holder: MyListViewHolder, position: Int) {
         holder.bindFilm(myListFilmy[position])
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateDataSet(dataSet: List<FilmyData>) {
+        this.myListFilmy = dataSet
+        notifyDataSetChanged()
     }
 
 }

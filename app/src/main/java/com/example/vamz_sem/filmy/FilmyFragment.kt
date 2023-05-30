@@ -2,19 +2,23 @@ package com.example.vamz_sem.filmy
 
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.SearchView
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.vamz_sem.BaseFragment
 import com.example.vamz_sem.R
 import com.example.vamz_sem.databinding.FragmentFilmyBinding
-import okhttp3.OkHttpClient
-import okhttp3.Request
+import kotlinx.coroutines.launch
 
 class FilmyFragment : BaseFragment<FragmentFilmyBinding, FilmyFragment.FilmyFragmentViewModel>() {
-
+    private lateinit var adapter: AdapterFilmy
     override fun getViewModel(): Class<FilmyFragmentViewModel> = FilmyFragmentViewModel::class.java
 
     override fun getFragmentView(): Int = R.layout.fragment_filmy
@@ -23,12 +27,15 @@ class FilmyFragment : BaseFragment<FragmentFilmyBinding, FilmyFragment.FilmyFrag
         super.onViewCreated(view, savedInstanceState)
         val layoutManager =
             GridLayoutManager(requireContext(), 2, GridLayoutManager.VERTICAL, false)
+        updateData()
 
+        globalViewModel.data.observe(viewLifecycleOwner,Observer{value ->
+            adapter = AdapterFilmy(value, globalViewModel).apply {
+                binding.filmyRecycler.layoutManager = layoutManager
+                binding.filmyRecycler.adapter = this
+            }
+        })
 
-        AdapterFilmy(filmList, globalViewModel).apply {
-            binding.filmyRecycler.layoutManager = layoutManager
-            binding.filmyRecycler.adapter = this
-        }
 
         binding.searchBtnId.setOnClickListener {
             if (binding.searchViewFilmy.visibility == View.VISIBLE) {
@@ -41,37 +48,25 @@ class FilmyFragment : BaseFragment<FragmentFilmyBinding, FilmyFragment.FilmyFrag
             }
         }
 
-        val client = OkHttpClient()
-
-        val request = Request.Builder()
-            .url("https://imdb8.p.rapidapi.com/auto-complete?q=lord")
-            .get()
-            .addHeader("X-RapidAPI-Key", "b7ba4e990cmshb5ea839ebe2e918p147e8ajsn9a24d4423523")
-            .addHeader("X-RapidAPI-Host", "imdb8.p.rapidapi.com")
-            .build()
-
-        val response = client.newCall(request).execute()
 
         binding.searchViewFilmy.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
-                AdapterFilmy(filterData(query), globalViewModel).apply {
-                    binding.filmyRecycler.layoutManager = layoutManager
-                    binding.filmyRecycler.adapter = this
-                }
-                binding.searchViewFilmy.clearFocus()
-                return true
+                return false
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                AdapterFilmy(filterData(newText), globalViewModel).apply {
-                    binding.filmyRecycler.layoutManager = layoutManager
-                    binding.filmyRecycler.adapter = this
+                if (!newText.isNullOrEmpty())
+                lifecycleScope.launch {
+                    val pomData = globalViewModel.database.getFilteredByInput(newText)
+                    adapter.updateDataSet(pomData)
+                } else {
+                    globalViewModel.data.value?.let { adapter.updateDataSet(it) }
                 }
                 return true
             }
         })
     }
-
+/*
     private fun filterData(newText: String?) : ArrayList<FilmyData> {
         val  filtered : ArrayList<FilmyData> = ArrayList<FilmyData>()
         for (data in filmList){
@@ -81,8 +76,7 @@ class FilmyFragment : BaseFragment<FragmentFilmyBinding, FilmyFragment.FilmyFrag
         }
         return filtered
     }
-
-
+*/
     class FilmyFragmentViewModel() : ViewModel() {
     }
 }

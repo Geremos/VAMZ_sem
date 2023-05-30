@@ -5,13 +5,14 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vamz_sem.R
 import com.example.vamz_sem.databinding.FilmObrItemBinding
 
 class AdapterFilmy(
-    var filmy: ArrayList<FilmyData>,
+    var filmy:List<FilmyData>,
     var globalViewModel: GlobalViewModel
 )
     : RecyclerView.Adapter<FilmViewHolder>() {
@@ -23,9 +24,14 @@ class AdapterFilmy(
 
     override fun getItemCount(): Int = filmy.size
     override fun onBindViewHolder(holder: FilmViewHolder, position: Int) {
-        filmy.let { holder.bindFilm(it[position]) }
+        holder.bindFilm(filmy[position])
     }
 
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateDataSet(dataSet: List<FilmyData>) {
+        this.filmy = dataSet
+        notifyDataSetChanged()
+    }
 }
 
 class FilmViewHolder(

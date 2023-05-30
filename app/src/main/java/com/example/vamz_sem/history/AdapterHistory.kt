@@ -1,5 +1,6 @@
 package com.example.vamz_sem.history
 
+
 import android.annotation.SuppressLint
 import android.util.Log
 import android.view.LayoutInflater
@@ -12,7 +13,6 @@ import com.example.vamz_sem.databinding.ListItemBinding
 import com.example.vamz_sem.filmy.FilmViewHolder
 import com.example.vamz_sem.filmy.FilmyData
 import com.example.vamz_sem.filmy.GlobalViewModel
-import com.example.vamz_sem.filmy.history
 
 class AdapterHistory(
     var historyFilmy: List<FilmyData>,
@@ -30,6 +30,12 @@ class AdapterHistory(
         holder.bindFilm(historyFilmy[position])
     }
 
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateDataSet(dataSet: List<FilmyData>) {
+        this.historyFilmy = dataSet
+        notifyDataSetChanged()
+    }
+
 }
 
 class HistoryViewHolder(
@@ -43,7 +49,6 @@ class HistoryViewHolder(
         filmListBinding.listImage.setOnClickListener {
             globalViewModel.globalFilmData = film
             globalViewModel.backFragmentId = R.id.historyFragment
-            Log.d("logBackFragmentId","${globalViewModel.backFragmentId}")
             it.findNavController().navigate(R.id.filmyDetailFragment)
         }
 
