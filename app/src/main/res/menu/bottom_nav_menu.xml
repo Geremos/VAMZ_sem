@@ -18,8 +18,8 @@
         android:icon="@drawable/icon_history"/>
 
     <item
-        android:id="@+id/accountFragment"
-        android:title="account"
-        android:icon="@drawable/icon_account"/>
+        android:id="@+id/settingsFragment"
+        android:title="settings"
+        android:icon="@drawable/ic_settings"/>
 
 </menu>

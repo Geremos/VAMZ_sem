@@ -1,25 +1,32 @@
 package com.example.vamz_sem
 
-import android.app.Application
+
+import android.Manifest
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
+import android.content.pm.PackageManager
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import androidx.activity.viewModels
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
+import androidx.core.app.ActivityCompat
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI.setupWithNavController
-import androidx.room.Room
+
 import com.example.vamz_sem.filmy.FilmyData
 import com.example.vamz_sem.filmy.GlobalViewModel
 import com.example.vamz_sem.databinding.ActivityMainBinding
-import com.example.vamz_sem.filmy.FilmyDatabase
-import com.example.vamz_sem.filmy.FilmyFragment
 import kotlinx.coroutines.launch
+import kotlin.random.Random
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -41,6 +48,10 @@ class MainActivity : AppCompatActivity() {
                 else -> binding.containerForBotNav.visibility = View.VISIBLE
             }
         }
+
+
+
+
 
 
         Log.d("FilmDataNapln","DataZfilmu")

@@ -13,4 +13,6 @@
     <string name="no_results">No Results</string>
     <string name="filter_menu">Filter menu</string>
     <string name="search_button">Search Button</string>
+    <string name="channel_name">Film Notification</string>
+    <string name="channel_description">Film notification channel</string>
 </resources>

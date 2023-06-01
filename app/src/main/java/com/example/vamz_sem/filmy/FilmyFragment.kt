@@ -17,7 +17,7 @@ import com.example.vamz_sem.R
 import com.example.vamz_sem.databinding.FragmentFilmyBinding
 import kotlinx.coroutines.launch
 
-class FilmyFragment : BaseFragment<FragmentFilmyBinding, FilmyFragment.FilmyFragmentViewModel>() {
+class FilmyFragment : BaseFragment<FragmentFilmyBinding, FilmyFragmentViewModel>() {
     private lateinit var adapter: AdapterFilmy
     override fun getViewModel(): Class<FilmyFragmentViewModel> = FilmyFragmentViewModel::class.java
 
@@ -66,18 +66,8 @@ class FilmyFragment : BaseFragment<FragmentFilmyBinding, FilmyFragment.FilmyFrag
             }
         })
     }
-/*
-    private fun filterData(newText: String?) : ArrayList<FilmyData> {
-        val  filtered : ArrayList<FilmyData> = ArrayList<FilmyData>()
-        for (data in filmList){
-            if (data.title!!.contains(newText ?: "", ignoreCase = true)) {
-                filtered.add(data)
-            }
-        }
-        return filtered
-    }
-*/
-    class FilmyFragmentViewModel() : ViewModel() {
-    }
+
 }
 
+class FilmyFragmentViewModel() : ViewModel() {
+}

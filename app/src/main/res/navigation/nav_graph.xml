@@ -27,10 +27,10 @@
         android:label="my_list_fragment"
         tools:layout="@layout/fragment_my_list" />
     <fragment
-        android:id="@+id/accountFragment"
-        android:name="com.example.vamz_sem.account.AccountFragment"
+        android:id="@+id/settingsFragment"
+        android:name="com.example.vamz_sem.settings.SettingsFragment"
         android:label="account_fragment"
-        tools:layout="@layout/fragment_account" />
+        tools:layout="@layout/fragment_settings" />
 
     <fragment
         android:id="@+id/filmyDetailFragment"
