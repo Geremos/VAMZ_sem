@@ -16,6 +16,7 @@ import androidx.core.app.NotificationManagerCompat
 import androidx.navigation.fragment.findNavController
 import com.example.vamz_sem.BaseFragment
 import com.example.vamz_sem.MainActivity
+import com.example.vamz_sem.MainApplication
 import com.example.vamz_sem.R
 import com.example.vamz_sem.databinding.FragmentSettingsBinding
 import com.example.vamz_sem.filmy.AddToMyListReceiver
@@ -23,15 +24,28 @@ import com.example.vamz_sem.filmy.FilmyData
 import com.example.vamz_sem.filmy.RandomFilmBrReceiver
 import kotlin.random.Random
 
-
+/**
+ * SettingsFragment je fragment zodpovedný za nastavenia aplikácie.
+ * Poskytuje možnosti odosielania notifikácií a výberu náhodného filmu.
+ */
 class SettingsFragment : BaseFragment<FragmentSettingsBinding>() {
     private lateinit var alarmManager: AlarmManager
 
+    /**
+     * Metóda, ktorá vracia ID layoutu fragmentu.
+     * @return [Int] ID layoutu fragmentu
+     */
     override fun getFragmentView(): Int {
         return R.layout.fragment_settings
     }
 
-
+    /**
+     * Metóda, ktorá sa volá po vytvorení zobrazenia fragmentu.
+     * Inicializuje UI a pridáva počúvatele na tlačidlá.
+     *
+     * @param view [View] zobrazenie fragmentu
+     * @param savedInstanceState [Bundle] stav fragmentu
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         updateData()
@@ -59,7 +73,7 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>() {
                     .putExtra("writers",randomFilm.writers)
                     .putExtra("cast",randomFilm.cast)
                     .putExtra("language",randomFilm.language)
-                    .putExtra("Country", randomFilm.Country)
+                    .putExtra("Country", randomFilm.country)
                     .putExtra("plot", randomFilm.plot)
                     .putExtra("genre", randomFilm.genre)
                     .putExtra("id",randomFilm.id)
@@ -75,12 +89,15 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>() {
             selectedTime.set(Calendar.MINUTE, binding.timePicker.minute)
             selectedTime.set(Calendar.SECOND, 0)
             Log.d("TimeOfNotification", selectedTime.time.toString())
-            // Set the selected time as the trigger time for the notification
+
+            MainApplication.showToast(requireContext(),R.drawable.ic_hourglass_,"Notifikácia nastavená na ${selectedTime.time}")
             alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, selectedTime.timeInMillis,AlarmManager.INTERVAL_DAY,pendingIntent)
         }
     }
 
-
+    /**
+     * Metóda pre odoslanie notifikácie s náhodným filmom.
+     */
     private fun sendNotification() {
         val randomFilm = randomFilm()
 
@@ -103,7 +120,7 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>() {
             putExtra("writers", randomFilm.writers)
             putExtra("cast", randomFilm.cast)
             putExtra("language", randomFilm.language)
-            putExtra("Country", randomFilm.Country)
+            putExtra("Country", randomFilm.country)
             putExtra("plot", randomFilm.plot)
             putExtra("genre", randomFilm.genre)
             putExtra("id", randomFilm.id)
@@ -122,8 +139,8 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>() {
                     NotificationCompat.BigTextStyle()
                         .bigText(randomFilm.plot)
                 )
+                // Nastavenie intentu, ktorý sa vyvolá po stlačení tlačidla notifikácie
                 .addAction(R.drawable.ic_film_notification,"Add to MyList",pendingIntentAdd)
-                // Set the intent that will fire when the user taps the notification
                 .setAutoCancel(true)
         }
 
@@ -142,6 +159,11 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>() {
         }
     }
 
+    /**
+     * Metóda pre výber náhodného filmu zo zoznamu dostupných filmov.
+     *
+     * @return [FilmyData] náhodný film
+     */
     private fun randomFilm(): FilmyData {
         val pomData = ArrayList<FilmyData>()
         for (data in globalViewModel.data.value!!) {

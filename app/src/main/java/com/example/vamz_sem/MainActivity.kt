@@ -1,7 +1,5 @@
 package com.example.vamz_sem
 
-
-
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
@@ -9,27 +7,30 @@ import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
-import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI.setupWithNavController
 import com.example.vamz_sem.databinding.ActivityMainBinding
 import com.example.vamz_sem.filmy.FilmyData
 import com.example.vamz_sem.filmy.GlobalViewModel
-import kotlinx.coroutines.launch
 
 
+/**
+ * Hlavná aktivita aplikácie.
+ */
 class MainActivity : AppCompatActivity() {
     private lateinit var drawer: DrawerLayout
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
     private lateinit var globalViewModel : GlobalViewModel
+    /**
+     * Metóda onCreate sa volá pri vytvorení aktivity.
+     *
+     * @param savedInstanceState Uchováva stav aktivity v prípade obnovenia.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         globalViewModel = ViewModelProvider(this)[GlobalViewModel::class.java]
@@ -39,14 +40,14 @@ class MainActivity : AppCompatActivity() {
         setupWithNavController(binding.bottomNavigationView,navController)
 
 
-
+        // Nastavenie viditeľnosti komponentu v závislosti od aktuálnej destinácie navigácie
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 R.id.filmyDetailFragment -> binding.containerForBotNav.visibility = View.GONE
                 else -> binding.containerForBotNav.visibility = View.VISIBLE
             }
         }
-
+        // Vytvorenie notifikačného kanála
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val name = R.string.channel_name
             val descriptionText = R.string.channel_description
@@ -62,6 +63,8 @@ class MainActivity : AppCompatActivity() {
 
 
         Log.d("FilmDataNapln","DataZfilmu")
+
+        // Vytvorenie a inicializácia objektov FilmyData pre rôzne filmy
         var film1 = FilmyData(
             "Avatar: The Way of Water",
             R.drawable.avatar2,
@@ -343,7 +346,6 @@ class MainActivity : AppCompatActivity() {
             globalViewModel.database.insertFilmyData(film5)
             globalViewModel.database.insertFilmyData(film6)
             globalViewModel.database.insertFilmyData(film7)
-
             globalViewModel.database.insertFilmyData(film8)
             globalViewModel.database.insertFilmyData(film9)
             globalViewModel.database.insertFilmyData(film10)
@@ -351,7 +353,6 @@ class MainActivity : AppCompatActivity() {
             globalViewModel.database.insertFilmyData(film12)
             globalViewModel.database.insertFilmyData(film13)
             globalViewModel.database.insertFilmyData(film14)
-
             globalViewModel.database.insertFilmyData(film15)
             globalViewModel.database.insertFilmyData(film16)
             globalViewModel.database.insertFilmyData(film17)

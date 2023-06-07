@@ -7,20 +7,22 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.BitmapFactory
 import android.util.Log
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
-import androidx.lifecycle.LifecycleCoroutineScope
-import androidx.lifecycle.lifecycleScope
-
 import com.example.vamz_sem.MainActivity
-import com.example.vamz_sem.MainApplication
 import com.example.vamz_sem.R
-import com.example.vamz_sem.settings.SettingsFragment
 import kotlinx.coroutines.*
+/**
+ * BroadcastReceiver pre zobrazenie notifikácií v danom čase s náhodnými filmami.
+ */
 class RandomFilmBrReceiver() : BroadcastReceiver() {
+    /**
+     * Spracovanie prijatej aktivity.
+     * @param context Aktuálny kontext.
+     * @param intent Prijatej aktivity.
+     */
     override fun onReceive(context: Context?, intent: Intent?) {
         val coroutineScope = CoroutineScope(Dispatchers.Main)
         val title = intent!!.getStringExtra("title")
@@ -84,7 +86,6 @@ class RandomFilmBrReceiver() : BroadcastReceiver() {
                     .bigText(plot)
             )
             .addAction(R.drawable.ic_film_notification,"Add to MyList",pendingIntentAdd)
-            // Set the intent that will fire when the user taps the notification
             .setAutoCancel(true)
 
         val notificationManager = NotificationManagerCompat.from(context)

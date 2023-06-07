@@ -9,7 +9,17 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
+/**
+ * BroadcastReceiver pre pridanie filmu do zoznamu "Môj zoznam".
+ */
 class AddToMyListReceiver : BroadcastReceiver() {
+
+    /**
+     * Metóda volaná pri stlačení tlačidla na notifikácií
+     *
+     * @param context kontext aktivity
+     * @param intent prijatý intent
+     */
     override fun onReceive(context: Context?, intent: Intent?) {
         val coroutineScope = CoroutineScope(Dispatchers.Main)
             val title = intent!!.getStringExtra("title")

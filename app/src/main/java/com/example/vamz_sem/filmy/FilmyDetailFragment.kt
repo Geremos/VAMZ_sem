@@ -5,8 +5,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.vamz_sem.BaseFragment
@@ -15,10 +13,21 @@ import com.example.vamz_sem.R
 import com.example.vamz_sem.databinding.FragmentFilmyDetailBinding
 import kotlinx.coroutines.launch
 
+
+/**
+ * Fragment pre zobrazenie detailov filmu.
+ */
 class FilmyDetailFragment :
     BaseFragment<FragmentFilmyDetailBinding>(),
     BottomPanelClickListener {
 
+    /**
+     * Metóda volaná pri vytvorení pohľadu fragmentu.
+     * @param inflater Objekt pre nafukovanie XML layoutu na pohľad.
+     * @param container Kontajner, do ktorého sa nafukuje layout.
+     * @param savedInstanceState Uložený stav fragmentu.
+     * @return Vytvorený pohľad fragmentu.
+     */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -46,11 +55,24 @@ class FilmyDetailFragment :
         binding.directorDetailId.text = "Director:" + film.director
         binding.writersDetailId.text = "Writers:" + film.writers
         binding.castDetailId.text = "Cast:" + film.cast
+        binding.zanerId.text = "Genre:" + film.genre
+        binding.jazykId.text = "Language:" + film.language
+        binding.krajinaId.text = "Country:" + film.country
         binding.plotDetailId.text = "Plot:" + film.plot
 
         return binding.root
     }
+
+    /**
+     * Metóda pre získanie ID layoutu fragmentu.
+     *
+     * @return ID layoutu fragmentu.
+     */
     override fun getFragmentView(): Int = R.layout.fragment_filmy_detail
+
+    /**
+     * Metóda volaná pri pridávaní filmu do "histórie" videných filmov.
+     */
     override fun addToHistory() {
         if (globalViewModel.globalFilmData.list == "myList") {
             Log.d("databaseList", "${globalViewModel.globalFilmData.list}")
@@ -95,6 +117,9 @@ class FilmyDetailFragment :
         }
     }
 
+    /**
+     * Metóda volaná pri pridávaní filmu do zoznamu Môj zoznam.
+     */
     override fun addToMyList() {
         if (globalViewModel.globalFilmData.list == "history") {
 
