@@ -18,6 +18,7 @@ class AdapterMyList(
 ) : RecyclerView.Adapter<MyListViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyListViewHolder {
         val from = LayoutInflater.from(parent.context)
+        myListFilmy = myListFilmy.sortedBy { it.id }
         val binding = ListItemBinding.inflate(from, parent, false)
         return MyListViewHolder(binding, globalViewModel)
     }

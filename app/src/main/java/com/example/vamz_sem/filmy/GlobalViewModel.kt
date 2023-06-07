@@ -12,6 +12,13 @@ class GlobalViewModel() : ViewModel() {
     val data: MutableLiveData<List<FilmyData>> by lazy {
         MutableLiveData<List<FilmyData>>()
     }
+    val filterGenres: MutableLiveData<List<String>> by lazy {
+        MutableLiveData<List<String>>()
+    }
+
+    val genres: MutableLiveData<List<String>> by lazy {
+        MutableLiveData<List<String>>()
+    }
     var globalFilmData = FilmyData(null,null,null,null,null,null,null,null,null,null)
     var backFragmentId : Int = 0
 }

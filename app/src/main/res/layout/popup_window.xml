@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/background"
+    android:minWidth="200dp">
+
+    <View
+        android:id="@+id/topOfGenre"
+        android:layout_width="8dp"
+        android:layout_height="0dp"
+        
+        app:layout_constraintBottom_toBottomOf="@id/genre_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/genre_text"
+        android:background="@color/buttons"
+
+        />
+
+
+    <TextView
+        android:id="@+id/genre_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="@string/genre_filter"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/topOfGenre"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/top_zaner_view"
+        android:layout_width="wrap_content"
+        android:layout_height="2dp"
+        android:background="@color/buttons"
+        app:layout_constraintBottom_toTopOf="@id/zaner_recycler"
+        app:layout_constraintEnd_toEndOf="@+id/zaner_recycler"
+        app:layout_constraintTop_toBottomOf="@id/genre_text" />
+
+    <View
+        android:layout_width="2dp"
+        android:layout_height="wrap_content"
+        android:background="@color/buttons"
+        app:layout_constraintStart_toEndOf="@id/zaner_recycler"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/zaner_recycler"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/top_zaner_view"
+        tools:listitem="@layout/zaner_item" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

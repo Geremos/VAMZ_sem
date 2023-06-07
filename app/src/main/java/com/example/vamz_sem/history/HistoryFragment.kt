@@ -12,17 +12,16 @@ import com.example.vamz_sem.R
 import com.example.vamz_sem.databinding.FragmentHistoryBinding
 import com.example.vamz_sem.filmy.FilmyData
 
-class HistoryFragment : BaseFragment<FragmentHistoryBinding,HistoryFragmentViewModel>() {
+class HistoryFragment : BaseFragment<FragmentHistoryBinding>() {
     private lateinit var adapter: AdapterHistory
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentHistoryBinding.inflate(layoutInflater)
+        updateData()
         return binding.root
     }
-
-    override fun getViewModel(): Class<HistoryFragmentViewModel> = HistoryFragmentViewModel::class.java
 
     override fun getFragmentView(): Int = R.id.historyFragment
 
@@ -44,5 +43,3 @@ class HistoryFragment : BaseFragment<FragmentHistoryBinding,HistoryFragmentViewM
         }
     }
 }
-
-class HistoryFragmentViewModel() : ViewModel()

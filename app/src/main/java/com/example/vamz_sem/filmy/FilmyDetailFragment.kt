@@ -6,17 +6,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.vamz_sem.BaseFragment
+import com.example.vamz_sem.MainApplication
 import com.example.vamz_sem.R
 import com.example.vamz_sem.databinding.FragmentFilmyDetailBinding
 import kotlinx.coroutines.launch
 
 class FilmyDetailFragment :
-    BaseFragment<FragmentFilmyDetailBinding, FilmyDetailFragmentViewModel>(),
+    BaseFragment<FragmentFilmyDetailBinding>(),
     BottomPanelClickListener {
 
     override fun onCreateView(
@@ -41,69 +41,55 @@ class FilmyDetailFragment :
         }
 
         Log.d("logFilmDataDetail", "$film")
-        if (film.id != null) {
-            binding.imageDetailId.setImageResource(film.filmImage!!)
-            binding.titleDetailId.text = film.title
-            binding.directorDetailId.text = "Director:" + film.director
-            binding.writersDetailId.text = "Writers:" + film.writers
-            binding.castDetailId.text = "Cast:" + film.cast
-            binding.plotDetailId.text = "Plot:" + film.plot
-        }
+        binding.imageDetailId.setImageResource(film.filmImage!!)
+        binding.titleDetailId.text = film.title
+        binding.directorDetailId.text = "Director:" + film.director
+        binding.writersDetailId.text = "Writers:" + film.writers
+        binding.castDetailId.text = "Cast:" + film.cast
+        binding.plotDetailId.text = "Plot:" + film.plot
 
         return binding.root
     }
-
-    override fun getViewModel(): Class<FilmyDetailFragmentViewModel> =
-        FilmyDetailFragmentViewModel::class.java
-
     override fun getFragmentView(): Int = R.layout.fragment_filmy_detail
     override fun addToHistory() {
         if (globalViewModel.globalFilmData.list == "myList") {
             Log.d("databaseList", "${globalViewModel.globalFilmData.list}")
-            val pomFilm = globalViewModel.data.value?.get(globalViewModel.globalFilmData.id)
-            val film = FilmyData(
-                pomFilm!!.title,
-                pomFilm.filmImage,
-                pomFilm.director,
-                pomFilm.writers,
-                pomFilm.cast,
-                pomFilm.language,
-                pomFilm.Country,
-                pomFilm.plot,
-                pomFilm.genre,
-                "history",
-                pomFilm.id
-            )
+            globalViewModel.globalFilmData.list = "history"
 
             lifecycleScope.launch {
-                globalViewModel.database.updateData(film)
+                Log.d("databaseUpdate",globalViewModel.globalFilmData.id.toString())
+                globalViewModel.database.updateData(globalViewModel.globalFilmData)
             }
             updateData()
-            globalViewModel.globalFilmData = film
             binding.bottomPanel.addToHistoryBtn.setImageResource(R.drawable.history_orange)
             binding.bottomPanel.addToMyListBtn.setImageResource(R.drawable.bookmarkunchecked)
-            Toast.makeText(context, "Addes to History from MyList", Toast.LENGTH_SHORT).show()
+
+            context?.let { MainApplication.showToast(it,R.drawable.ic_add,"Addes to History from MyList") }
         } else {
             Log.d("databaseList", "${globalViewModel.globalFilmData.list}")
             if (globalViewModel.globalFilmData.list != "history") {
                 globalViewModel.globalFilmData.id.let { globalViewModel.data.value?.get(it) }?.list =
                     "history"
                 lifecycleScope.launch {
+
+                    Log.d("databaseUpdate", globalViewModel.globalFilmData.id.toString())
                     globalViewModel.database.updateList("history", globalViewModel.globalFilmData.id)
                 }
                 updateData()
                 globalViewModel.globalFilmData.list = "history"
                 binding.bottomPanel.addToHistoryBtn.setImageResource(R.drawable.history_orange)
-                Toast.makeText(context, "Addes to History", Toast.LENGTH_SHORT).show()
+                context?.let { MainApplication.showToast(it,R.drawable.ic_add,"Addes to History") }
             } else {
                 globalViewModel.globalFilmData.id.let { globalViewModel.data.value?.get(it) }?.list =
                     ""
                 lifecycleScope.launch {
+
+                    Log.d("databaseUpdate", globalViewModel.globalFilmData.id.toString())
                     globalViewModel.database.updateList("", globalViewModel.globalFilmData.id)
                 }
                 updateData()
                 globalViewModel.globalFilmData.list = ""
-                Toast.makeText(context, "Removed from history", Toast.LENGTH_SHORT).show()
+                context?.let { MainApplication.showToast(it,R.drawable.ic_remove,"Removed from history") }
                 binding.bottomPanel.addToHistoryBtn.setImageResource(R.drawable.icon_history)
             }
         }
@@ -111,54 +97,44 @@ class FilmyDetailFragment :
 
     override fun addToMyList() {
         if (globalViewModel.globalFilmData.list == "history") {
-            Log.d("databaseList", "${globalViewModel.globalFilmData.list}")
-            val pomFilm = globalViewModel.data.value?.get(globalViewModel.globalFilmData.id)
-            val film = FilmyData(
-                pomFilm!!.title,
-                pomFilm.filmImage,
-                pomFilm.director,
-                pomFilm.writers,
-                pomFilm.cast,
-                pomFilm.language,
-                pomFilm.Country,
-                pomFilm.plot,
-                pomFilm.genre,
-                "myList",
-                pomFilm.id
-            )
 
+            Log.d("databaseUpdate", globalViewModel.globalFilmData.id.toString())
+            Log.d("databaseList", "${globalViewModel.globalFilmData.list}")
+            globalViewModel.globalFilmData.list = "myList"
+
+            Log.d("databaseUpdate", globalViewModel.globalFilmData.id.toString())
             lifecycleScope.launch {
-                globalViewModel.database.updateData(film)
+                globalViewModel.database.updateData(globalViewModel.globalFilmData)
             }
             updateData()
-            globalViewModel.globalFilmData = film
-
             binding.bottomPanel.addToMyListBtn.setImageResource(R.drawable.bookmark_added)
             binding.bottomPanel.addToHistoryBtn.setImageResource(R.drawable.icon_history)
-            Toast.makeText(context, "Addes to MyList from History", Toast.LENGTH_SHORT).show()
+            context?.let { MainApplication.showToast(it,R.drawable.ic_add,"Addes to MyList from History") }
         } else {
             Log.d("databaseList", "${globalViewModel.globalFilmData.list}")
             if (globalViewModel.globalFilmData.list != "myList") {
                 globalViewModel.globalFilmData.id.let { globalViewModel.data.value?.get(it) }?.list = "myList"
+                Log.d("databaseUpdate", globalViewModel.globalFilmData.id.toString())
                 lifecycleScope.launch {
+                    Log.d("databaseUpdateIn", globalViewModel.globalFilmData.id.toString())
                     globalViewModel.database.updateList("myList", globalViewModel.globalFilmData.id)
                 }
                 updateData()
                 globalViewModel.globalFilmData.list = "myList"
                 binding.bottomPanel.addToMyListBtn.setImageResource(R.drawable.bookmark_added)
-                Toast.makeText(context, "Addes to MyList", Toast.LENGTH_SHORT).show()
+                context?.let { MainApplication.showToast(it,R.drawable.ic_add,"Addes to MyList") }
             } else {
                 globalViewModel.globalFilmData.id.let { globalViewModel.data.value?.get(it) }?.list = ""
+                Log.d("databaseUpdate", globalViewModel.globalFilmData.id.toString())
                 lifecycleScope.launch {
+                    Log.d("databaseUpdateIn", globalViewModel.globalFilmData.id.toString())
                     globalViewModel.database.updateList("", globalViewModel.globalFilmData.id)
                 }
                 updateData()
                 globalViewModel.globalFilmData.list = ""
                 binding.bottomPanel.addToMyListBtn.setImageResource(R.drawable.bookmarkunchecked)
-                Toast.makeText(context, "Removed from MyList", Toast.LENGTH_SHORT).show()
+                context?.let { MainApplication.showToast(it,R.drawable.ic_remove,"Removed from MyList") }
             }
         }
     }
 }
-
-class FilmyDetailFragmentViewModel : ViewModel()

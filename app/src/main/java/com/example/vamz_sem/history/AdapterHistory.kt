@@ -21,6 +21,7 @@ class AdapterHistory(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HistoryViewHolder {
         val from = LayoutInflater.from(parent.context)
         val binding = ListItemBinding.inflate(from, parent, false)
+        historyFilmy = historyFilmy.sortedBy { it.id }
         return HistoryViewHolder(binding, globalViewModel)
     }
 

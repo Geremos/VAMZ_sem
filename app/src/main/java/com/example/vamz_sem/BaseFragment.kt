@@ -17,9 +17,8 @@ import com.example.vamz_sem.filmy.GlobalViewModel
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
-abstract class BaseFragment<T : ViewDataBinding, VM : ViewModel> : Fragment() {
+abstract class BaseFragment<T : ViewDataBinding> : Fragment() {
     protected lateinit var binding: T
-    protected lateinit var viewModel: VM
     val globalViewModel by sharedViewModel<GlobalViewModel>()
 
     override fun onCreateView(
@@ -28,18 +27,15 @@ abstract class BaseFragment<T : ViewDataBinding, VM : ViewModel> : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater,getFragmentView(),container,false)
-        viewModel = ViewModelProvider(this)[getViewModel()]
         return binding.root
     }
-
-    abstract fun getViewModel(): Class<VM>
 
     abstract fun getFragmentView(): Int
 
     fun updateData(){
         lifecycleScope.launch {
             globalViewModel.data.value =  globalViewModel.database.getAllFilmyData()
-            Log.d("updateData", "${globalViewModel.data.value}")
+            globalViewModel.data.value =  globalViewModel.data.value!!.sortedBy { it.id }
         }
     }
 }
