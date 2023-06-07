@@ -3,8 +3,6 @@ package com.example.vamz_sem.filmy
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import androidx.room.TypeConverters
-
 
 @Entity(tableName = "filmy_data")
 data class FilmyData(
