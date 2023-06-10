@@ -16,23 +16,6 @@ import com.example.vamz_sem.filmy.FilmyData
 class MyListFragment : BaseFragment<FragmentMyListBinding>() {
 
     /**
-     * Metóda, ktorá sa volá pri vytvorení zobrazenia fragmentu.
-     * Aktualizuje údaje pomocou metódy updateData().
-     * @param inflater [LayoutInflater] objekt, ktorý sa používa na inflatovanie layoutu fragmentu
-     * @param container [ViewGroup] rodičovský view, do ktorého sa fragment vkladá
-     * @param savedInstanceState [Bundle] stav fragmentu, ak existuje
-     * @return [View] koreňový view layoutu fragmentu
-     */
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentMyListBinding.inflate(layoutInflater)
-        updateData()
-        return binding.root
-    }
-
-    /**
      * Metóda, ktorá sa volá po vytvorení zobrazenia fragmentu.
      * Initializes the UI and sets up the RecyclerView with the list of films.
      * Aktualizuje údaje pomocou metódy updateData().
@@ -63,5 +46,5 @@ class MyListFragment : BaseFragment<FragmentMyListBinding>() {
      * Metóda, ktorá vracia ID layoutu fragmentu.
      * @return [Int] ID layoutu fragmentu
      */
-    override fun getFragmentView(): Int = R.id.myListFragment
+    override fun getFragmentView(): Int = R.layout.fragment_my_list
 }

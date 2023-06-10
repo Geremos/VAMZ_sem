@@ -24,7 +24,6 @@ class RandomFilmBrReceiver() : BroadcastReceiver() {
      * @param intent Prijatej aktivity.
      */
     override fun onReceive(context: Context?, intent: Intent?) {
-        val coroutineScope = CoroutineScope(Dispatchers.Main)
         val title = intent!!.getStringExtra("title")
         val filmImage = intent.getIntExtra("filmImage", 0)
         val director = intent.getStringExtra("director")

@@ -1,5 +1,6 @@
 package com.example.vamz_sem
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +8,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.vamz_sem.filmy.GlobalViewModel
 import kotlinx.coroutines.launch
@@ -20,7 +22,7 @@ import org.koin.androidx.viewmodel.ext.android.sharedViewModel
  */
 abstract class BaseFragment<T : ViewDataBinding> : Fragment() {
     protected lateinit var binding: T  // Premenná pre viazanie dát layoutu fragmentu
-    val globalViewModel by sharedViewModel<GlobalViewModel>() // Zdieľaný view model
+    lateinit var globalViewModel: GlobalViewModel  // Zdieľaný view model
 
     /**
      * Metóda, ktorá sa volá pri vytvorení zobrazenia fragmentu.
@@ -32,6 +34,7 @@ abstract class BaseFragment<T : ViewDataBinding> : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        updateData()
         binding = DataBindingUtil.inflate(inflater,getFragmentView(),container,false)
         return binding.root
     }
@@ -51,5 +54,9 @@ abstract class BaseFragment<T : ViewDataBinding> : Fragment() {
             globalViewModel.data.value =  globalViewModel.database.getAllFilmyData()
             globalViewModel.data.value =  globalViewModel.data.value!!.sortedBy { it.id }
         }
+    }
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        globalViewModel = ViewModelProvider(requireActivity())[GlobalViewModel::class.java]
     }
 }

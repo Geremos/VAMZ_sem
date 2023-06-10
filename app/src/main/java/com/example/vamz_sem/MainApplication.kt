@@ -9,10 +9,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.room.Room
 import com.example.vamz_sem.filmy.FilmyDatabase
-import com.example.vamz_sem.koin.vamzKoin
-import org.koin.android.ext.koin.androidContext
-import org.koin.android.ext.koin.androidLogger
-import org.koin.core.context.startKoin
 /**
  * Hlavná aplikácia, ktorá rozširuje triedu `Application`.
  */
@@ -46,16 +42,6 @@ class MainApplication : Application() {
      */
     override fun onCreate() {
         super.onCreate()
-        // Spustenie Koin frameworku
-        startKoin {
-            // Logovanie Koin do Android loggera
-            androidLogger()
-            // Referencia na Android kontext
-            androidContext(this@MainApplication)
-            // Načítanie modulov
-            modules(vamzKoin)
-        }
-
         // Vytvorenie inštancie databázy
         database = Room.databaseBuilder(
             applicationContext,

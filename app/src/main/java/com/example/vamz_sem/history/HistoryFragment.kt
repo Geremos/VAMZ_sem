@@ -16,29 +16,11 @@ import com.example.vamz_sem.filmy.FilmyData
  * Zobrazuje zoznam filmov, ktoré boli už "videné" v minulosti.
  */
 class HistoryFragment : BaseFragment<FragmentHistoryBinding>() {
-    private lateinit var adapter: AdapterHistory
-    /**
-     * Metóda, ktorá sa volá pri vytvorení zobrazenia fragmentu.
-     * Inicializuje UI a nastavuje RecyclerView s adaptérom pre zobrazovanie histórie filmov.
-     *
-     * @param inflater [LayoutInflater] objekt pre nadúvanie XML layoutu
-     * @param container [ViewGroup] rodičovský view
-     * @param savedInstanceState [Bundle] stav fragmentu
-     * @return [View] vytvorené zobrazenie fragmentu
-     */
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentHistoryBinding.inflate(layoutInflater)
-        updateData()
-        return binding.root
-    }
     /**
      * Metóda, ktorá vracia ID layoutu fragmentu.
      * @return [Int] ID layoutu fragmentu
      */
-    override fun getFragmentView(): Int = R.id.historyFragment
+    override fun getFragmentView(): Int = R.layout.fragment_history
 
     /**
      * Metóda, ktorá sa volá po vytvorení zobrazenia fragmentu.

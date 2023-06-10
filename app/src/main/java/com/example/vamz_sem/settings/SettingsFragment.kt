@@ -46,7 +46,7 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>() {
      * @param view [View] zobrazenie fragmentu
      * @param savedInstanceState [Bundle] stav fragmentu
      */
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         updateData()
 

@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<filmyDataList>
+    <FilmyData>
+        <title>Avatar: The Way of Water</title>
+        <filmImage>avatar2</filmImage>
+        <director>James Cameron</director>
+        <writers>James Cameron, Rick Jaffa, Amanda Silver, Shane Salerno, Josh Friedman</writers>
+        <cast>Sam Worthington, Zoe Saldaña, Sigourney Weaver, Stephen Lang, Kate Winslet, Cliff
+            Curtis
+        </cast>
+        <language>English</language>
+        <country>USA</country>
+        <plot>Set more than a decade after the events of the first film, learn the story of the
+            Sully family (Jake, Neytiri, and their kids), the trouble that follows them, the lengths
+            they go to keep each other safe, the battles they fight to stay alive, and the tragedies
+            they endure.
+        </plot>
+        <genre>Action, Adventure, Fantasy</genre>
+    </FilmyData>
+    <FilmyData>
+        <title>How to Train Your Dragon</title>
+        <filmImage>howtotrainyourdrgon1</filmImage>
+        <director>Chris Sanders</director>
+        <writers>Chris Sanders, Dean DeBlois, Cressida Cowell, William Davies</writers>
+        <cast>Jay Baruchel, Gerard Butler, Craig Ferguson, America Ferrera, Jonah Hill, Christopher
+            Mintz-Plasse
+        </cast>
+        <language>English</language>
+        <country>USA</country>
+        <plot>As the son of a Viking leader on the cusp of manhood, shy Hiccup Horrendous Haddock
+            III faces a rite of passage: he must kill a dragon to prove his warrior mettle. But
+            after downing a feared dragon, he realizes that he no longer wants to destroy it, and
+            instead befriends the beast – which he names Toothless – much to the chagrin of his
+            warrior father.
+        </plot>
+        <genre>Animation, Adventure, Family</genre>
+    </FilmyData>
+    <FilmyData>
+        <title>Despicable Me</title>
+        <filmImage>despicableme1</filmImage>
+        <director>Pierre Coffin, Chris Renaud</director>
+        <writers>Sergio Pablos</writers>
+        <cast>Steve Carell, Miranda Cosgrove, Dana Gaier, Elsie Fisher, Jason Segel, Russell Brand
+        </cast>
+        <language>English</language>
+        <country>USA</country>
+        <plot>Villainous Gru lives up to his reputation as a despicable, deplorable and downright
+            unlikable guy when he hatches a plan to steal the moon from the sky. But he has a tough
+            time staying on task after three orphans land in his care.
+        </plot>
+        <genre>Animation, Comedy, Family</genre>
+    </FilmyData>
+    <FilmyData>
+        <title>Johnny English</title>
+        <filmImage>johnyenglish1</filmImage>
+        <director>Peter Howitt</director>
+        <writers>Neal Purvis, William Davies, Robert Wade</writers>
+        <cast>Rowan Atkinson, Natalie Imbruglia, Ben Miller, John Malkovich, Greg Wise</cast>
+        <language>English</language>
+        <country>USA</country>
+        <plot>A lowly pencil pusher working for MI7, Johnny English is suddenly promoted to super
+            spy after Agent One is assassinated and every other agent is blown up at his funeral.
+            When a billionaire entrepreneur sponsors the exhibition of the Crown Jewels—and the
+            valuable gems disappear on the opening night and on English's watch, the
+            newly-designated agent must jump into action to find the thief and recover the missing
+            gems.
+        </plot>
+        <genre>Action, Adventure, Comedy</genre>
+    </FilmyData>
+    <FilmyData>
+        <title>Pirates of the Caribbean: The Curse of the Black Pearl</title>
+        <filmImage>pirates1</filmImage>
+        <director>Gore Verbinski</director>
+        <writers>Gore Verbinski, Ted Elliott, Terry Rossio</writers>
+        <cast>Johnny Depp, Orlando Bloom, Keira Knightley, Geoffrey Rush, Jack Davenport, Jonathan
+            Pryce, Lee Arenberg, Mackenzie Crook
+        </cast>
+        <language>English</language>
+        <country>USA</country>
+        <plot>Jack Sparrow, a freewheeling 18th-century pirate, quarrels with a rival pirate bent on
+            pillaging Port Royal. When the governor's daughter is kidnapped, Sparrow decides to help
+            the girl's love save her.
+        </plot>
+        <genre>Action, Adventure, Fantasy</genre>
+    </FilmyData>
+    <FilmyData>
+        <title>Star Wars: Episode III - Revenge of the Sith</title>
+        <filmImage>starwars3</filmImage>
+        <director>George Lucas</director>
+        <writers>George Lucas</writers>
+        <cast>Hayden Christensen, Ewan McGregor, Natalie Portman, Ian McDiarmid, Samuel L. Jackson,
+            Jimmy Smits, Frank Oz
+        </cast>
+        <language>English</language>
+        <country>USA</country>
+        <plot>The evil Darth Sidious enacts his final plan for unlimited power—and the heroic Jedi
+            Anakin Skywalker must choose a side.
+        </plot>
+        <genre>Action, Adventure, Fantasy</genre>
+    </FilmyData>
+    <FilmyData>
+        <title>Transformers</title>
+        <filmImage>transformers1</filmImage>
+        <director>Michael Bay</director>
+        <writers>Alex Kurtzman, Roberto Orci, John Rogers</writers>
+        <cast>Shia LaBeouf, Megan Fox, Josh Duhamel, Tyrese Gibson, Rachael Taylor, John Turturro,
+            Peter Cullen
+        </cast>
+        <language>English</language>
+        <country>USA</country>
+        <plot>Young teenager Sam Witwicky becomes involved in the ancient struggle between two
+            extraterrestrial factions of transforming robots—the heroic Autobots and the evil
+            Decepticons. Sam holds the clue to unimaginable power and the Decepticons will stop at
+            nothing to retrieve it.
+        </plot>
+        <genre>Action, Adventure, Sci-Fi</genre>
+    </FilmyData>
+    <FilmyData>
+        <title>Iron Man</title>
+        <filmImage>ironmam1</filmImage>
+        <director>Jon Favreau</director>
+        <writers>Mark Fergus, Hawk Ostby, Art Marcum, Matt Holloway</writers>
+        <cast>Robert Downey Jr., Gwyneth Paltrow, Terrence Howard, Jeff Bridges</cast>
+        <language>English</language>
+        <country>USA</country>
+        <plot>After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a
+            unique weaponized suit of armor to fight against evil forces and becomes the superhero
+            Iron Man.
+        </plot>
+        <genre>Action, Adventure, Sci-Fi</genre>
+    </FilmyData>
+    <FilmyData>
+        <title>Star Wars: Episode IV - A New Hope</title>
+        <filmImage>starwars4</filmImage>
+        <director>George Lucas</director>
+        <writers>George Lucas</writers>
+        <cast>Mark Hamill, Harrison Ford, Carrie Fisher, Alec Guinness</cast>
+        <language>English</language>
+        <country>USA</country>
+        <plot>Luke Skywalker joins forces with a Jedi Knight, a cocky pilot, a Wookiee, and two
+            droids to save the galaxy from the Empire's world-destroying battle station, while also
+            attempting to rescue Princess Leia from the mysterious Darth Vader.
+        </plot>
+        <genre>Action, Adventure, Fantasy</genre>
+    </FilmyData>
+    <FilmyData>
+        <title>Toy Story</title>
+        <filmImage>toystory1</filmImage>
+        <director>John Lasseter</director>
+        <writers>John Lasseter, Pete Docter, Andrew Stanton, Joe Ranft, Joss Whedon</writers>
+        <cast>Tom Hanks, Tim Allen, Don Rickles, Jim Varney</cast>
+        <language>English</language>
+        <country>USA</country>
+        <plot>A cowboy doll is profoundly threatened and jealous when a new spaceman figure
+            supplants him as top toy in a boy's room.
+        </plot>
+        <genre>Animation, Adventure, Comedy</genre>
+    </FilmyData>
+    <FilmyData>
+        <title>The Avengers</title>
+        <filmImage>avengers</filmImage>
+        <director>Joss Whedon</director>
+        <writers>Joss Whedon, Zak Penn</writers>
+        <cast>Robert Downey Jr., Chris Evans, Mark Ruffalo, Chris Hemsworth, Scarlett Johansson,
+            Jeremy Renner
+        </cast>
+        <language>English</language>
+        <country>USA</country>
+        <plot>Earth's mightiest heroes must come together and learn to fight as a team to stop the
+            mischievous Loki and his alien army from enslaving humanity.
+        </plot>
+        <genre>Action, Adventure, Sci-Fi</genre>
+    </FilmyData>
+    <FilmyData>
+        <title>Indiana Jones: Raiders of the Lost Ark</title>
+        <filmImage>indianajohneslostark</filmImage>
+        <director>Steven Spielberg</director>
+        <writers>Lawrence Kasdan</writers>
+        <cast>Harrison Ford, Karen Allen, Paul Freeman</cast>
+        <language>English</language>
+        <country>USA</country>
+        <plot>Archaeologist and adventurer Indiana Jones is hired by the U.S. government to find the
+            Ark of the Covenant before the Nazis.
+        </plot>
+        <genre>Action, Adventure</genre>
+    </FilmyData>
+    <FilmyData>
+        <title>Finding Nemo</title>
+        <filmImage>findingnemo</filmImage>
+        <director>Andrew Stanton, Lee Unkrich</director>
+        <writers>Andrew Stanton, Bob Peterson, David Reynolds</writers>
+        <cast>Albert Brooks, Ellen DeGeneres, Alexander Gould</cast>
+        <language>English</language>
+        <country>USA</country>
+        <plot>After his son is captured in the Great Barrier Reef and taken to Sydney, a timid
+            clownfish sets out on a journey to bring him home.
+        </plot>
+        <genre>Animation, Adventure, Comedy</genre>
+    </FilmyData>
+    <FilmyData>
+        <title>Spider-Man: Homecoming</title>
+        <filmImage>spidermanhomecoming</filmImage>
+        <director>Jon Watts</director>
+        <writers>Jonathan Goldstein, John Francis Daley, Jon Watts, Christopher Ford, Chris McKenna,
+            Erik Sommers
+        </writers>
+        <cast>Tom Holland, Michael Keaton, Robert Downey Jr., Marisa Tomei</cast>
+        <language>English</language>
+        <country>USA</country>
+        <plot>Peter Parker balances his life as an ordinary high school student in Queens with his
+            superhero alter-ego Spider-Man, and finds himself on the trail of a new menace prowling
+            the skies of New York City.
+        </plot>
+        <genre>Action, Adventure, Sci-Fi</genre>
+    </FilmyData>
+    <FilmyData>
+        <title>Star Wars: Episode VI - Return of the Jedi</title>
+        <filmImage>starwars6</filmImage>
+        <director>Richard Marquand</director>
+        <writers>Lawrence Kasdan, George Lucas</writers>
+        <cast>Mark Hamill, Harrison Ford, Carrie Fisher, Billy Dee Williams</cast>
+        <language>English</language>
+        <country>USA</country>
+        <plot>After a daring mission to rescue Han Solo from Jabba the Hutt, the Rebels dispatch to
+            Endor to destroy the second Death Star. Meanwhile, Luke Skywalker struggles to bring
+            Darth Vader back to the light side of the Force.
+        </plot>
+        <genre>Action, Adventure, Fantasy</genre>
+    </FilmyData>
+    <FilmyData>
+        <title>Frozen</title>
+        <filmImage>frozen</filmImage>
+        <director>Chris Buck, Jennifer Lee</director>
+        <writers>Jennifer Lee, Chris Buck, Shane Morris</writers>
+        <cast>Kristen Bell, Idina Menzel, Jonathan Groff, Josh Gad</cast>
+        <language>English</language>
+        <country>USA</country>
+        <plot>When the newly crowned Queen Elsa accidentally uses her power to turn things into ice
+            to curse her home in infinite winter, her sister Anna teams up with a mountain man, his
+            playful reindeer, and a snowman to change the weather condition.
+        </plot>
+        <genre>Animation, Adventure, Comedy</genre>
+    </FilmyData>
+    <FilmyData>
+        <title>Guardians of the Galaxy</title>
+        <filmImage>guardiansofthegalaxy</filmImage>
+        <director>James Gunn</director>
+        <writers>James Gunn, Nicole Perlman</writers>
+        <cast>Chris Pratt, Zoe Saldana, Dave Bautista, Vin Diesel, Bradley Cooper</cast>
+        <language>English</language>
+        <country>USA</country>
+        <plot>A group of intergalactic criminals is forced to work together to stop a fanatical
+            warrior from taking control of the universe.
+        </plot>
+        <genre>Action, Adventure, Comedy</genre>
+    </FilmyData>
+    <FilmyData>
+        <title>Avengers: Infinity War</title>
+        <filmImage>avengersinfinitywar</filmImage>
+        <director>Anthony Russo, Joe Russo</director>
+        <writers>Christopher Markus, Stephen McFeely</writers>
+        <cast>Robert Downey Jr., Chris Hemsworth, Mark Ruffalo, Chris Evans, Scarlett Johansson
+        </cast>
+        <language>English</language>
+        <country>USA</country>
+        <plot>The Avengers and their allies must be willing to sacrifice all in an attempt to defeat
+            the powerful Thanos before his blitz of devastation and ruin puts an end to the
+            universe.
+        </plot>
+        <genre>Action, Adventure, Fantasy</genre>
+    </FilmyData>
+    <FilmyData>
+        <title>Star Wars: Episode V - The Empire Strikes Back</title>
+        <filmImage>starwars5</filmImage>
+        <director>Irvin Kershner</director>
+        <writers>Leigh Brackett, Lawrence Kasdan, George Lucas</writers>
+        <cast>Mark Hamill, Harrison Ford, Carrie Fisher, Billy Dee Williams</cast>
+        <language>English</language>
+        <country>USA</country>
+        <plot>After the rebels are overpowered by the Empire on the ice planet Hoth, Luke Skywalker
+            begins Jedi training with Yoda, while his friends are pursued by Darth Vader.
+        </plot>
+        <genre>Action, Adventure, Fantasy</genre>
+    </FilmyData>
+    <FilmyData>
+        <title>Thor: Ragnarok</title>
+        <filmImage>thorragnarok</filmImage>
+        <director>Taika Waititi</director>
+        <writers>Eric Pearson, Craig Kyle, Christopher L. Yost</writers>
+        <cast>Chris Hemsworth, Tom Hiddleston, Cate Blanchett, Mark Ruffalo</cast>
+        <language>English</language>
+        <country>USA</country>
+        <plot>Imprisoned on the planet Sakaar, Thor must race against time to return to Asgard and
+            stop Ragnarok, the destruction of his world, at the hands of the powerful and ruthless
+            villain Hela.
+        </plot>
+        <genre>Action, Adventure, Comedy</genre>
+    </FilmyData>
+
+    <FilmyData>
+        <title>Avengers: Endgame</title>
+        <filmImage>avengersendgame</filmImage>
+        <director>Anthony Russo, Joe Russo</director>
+        <writers>Christopher Markus, Stephen McFeely</writers>
+        <cast>Robert Downey Jr., Chris Evans, Mark Ruffalo, Chris Hemsworth, Scarlett Johansson
+        </cast>
+        <language>English</language>
+        <country>USA</country>
+        <plot>After the devastating events of Avengers: Infinity War, the universe is in ruins. With
+            the help of remaining allies, the Avengers assemble once more in order to reverse
+            Thanos' actions and restore balance to the universe.
+        </plot>
+        <genre>Action, Adventure, Drama</genre>
+    </FilmyData>
+</filmyDataList>

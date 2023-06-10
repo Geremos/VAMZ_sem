@@ -22,17 +22,14 @@ class FilmyDetailFragment :
     BottomPanelClickListener {
 
     /**
-     * Metóda volaná pri vytvorení pohľadu fragmentu.
-     * @param inflater Objekt pre nafukovanie XML layoutu na pohľad.
-     * @param container Kontajner, do ktorého sa nafukuje layout.
-     * @param savedInstanceState Uložený stav fragmentu.
-     * @return Vytvorený pohľad fragmentu.
+     * Metóda, ktorá sa volá po vytvorení zobrazenia fragmentu.
+     * Nastavuje elementy layoutu na zobrazenie informácií o filme
+     *
+     * @param view [View] zobrazenie fragmentu
+     * @param savedInstanceState [Bundle] stav fragmentu
      */
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentFilmyDetailBinding.inflate(layoutInflater)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         updateData()
         binding.backIcon.setOnClickListener {
             Log.d("logBackFragmentId", "${globalViewModel.backFragmentId}")
@@ -60,7 +57,6 @@ class FilmyDetailFragment :
         binding.krajinaId.text = "Country:" + film.country
         binding.plotDetailId.text = "Plot:" + film.plot
 
-        return binding.root
     }
 
     /**
