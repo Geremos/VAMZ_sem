@@ -1,9 +1,10 @@
-package com.example.vamz_sem.filmy
+package com.example.vamz_sem
 
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.vamz_sem.MainApplication
+import com.example.vamz_sem.database.FilmyDao
+import com.example.vamz_sem.database.FilmyData
 
 /**
  * Globalny view model používaný v aplikácii na zdieľanie dát medzi fragmentami.

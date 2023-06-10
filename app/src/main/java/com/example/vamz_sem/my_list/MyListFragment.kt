@@ -1,14 +1,12 @@
 package com.example.vamz_sem.my_list
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.vamz_sem.BaseFragment
 import com.example.vamz_sem.R
 import com.example.vamz_sem.databinding.FragmentMyListBinding
-import com.example.vamz_sem.filmy.FilmyData
+import com.example.vamz_sem.database.FilmyData
 /**
  * MyListFragment je fragment zodpovedný za zobrazenie zoznamu filmov v "Mojom zozname".
  * Zobrazuje filmy, ktoré boli pridané do zoznamu "myList".

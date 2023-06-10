@@ -5,7 +5,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.example.vamz_sem.GlobalViewModel
 import com.example.vamz_sem.R
+import com.example.vamz_sem.database.FilmyData
 import com.example.vamz_sem.databinding.FilmObrItemBinding
 
 /**

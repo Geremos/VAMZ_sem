@@ -19,9 +19,7 @@ import com.example.vamz_sem.MainActivity
 import com.example.vamz_sem.MainApplication
 import com.example.vamz_sem.R
 import com.example.vamz_sem.databinding.FragmentSettingsBinding
-import com.example.vamz_sem.filmy.AddToMyListReceiver
-import com.example.vamz_sem.filmy.FilmyData
-import com.example.vamz_sem.filmy.RandomFilmBrReceiver
+import com.example.vamz_sem.database.FilmyData
 import kotlin.random.Random
 
 /**

@@ -7,8 +7,8 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vamz_sem.R
 import com.example.vamz_sem.databinding.ListItemBinding
-import com.example.vamz_sem.filmy.FilmyData
-import com.example.vamz_sem.filmy.GlobalViewModel
+import com.example.vamz_sem.database.FilmyData
+import com.example.vamz_sem.GlobalViewModel
 /**
  * AdapterMyList je adaptér pre RecyclerView v MyListFragment.
  * Slúži na zobrazenie zoznamu filmov v "Mojom zozname".

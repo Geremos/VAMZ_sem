@@ -1,4 +1,4 @@
-package com.example.vamz_sem.filmy
+package com.example.vamz_sem.database
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

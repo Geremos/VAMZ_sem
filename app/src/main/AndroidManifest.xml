@@ -25,8 +25,8 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".filmy.RandomFilmBrReceiver" />
-        <receiver android:name=".filmy.AddToMyListReceiver" />
+        <receiver android:name=".settings.RandomFilmBrReceiver" />
+        <receiver android:name=".settings.AddToMyListReceiver" />
     </application>
 
 </manifest>

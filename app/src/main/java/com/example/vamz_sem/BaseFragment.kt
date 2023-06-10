@@ -10,9 +10,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import com.example.vamz_sem.filmy.GlobalViewModel
 import kotlinx.coroutines.launch
-import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 /**
  * BaseFragment je abstraktná trieda, ktorá slúži ako základná implementácia pre všetky fragmenty v aplikácii.
@@ -55,6 +53,12 @@ abstract class BaseFragment<T : ViewDataBinding> : Fragment() {
             globalViewModel.data.value =  globalViewModel.data.value!!.sortedBy { it.id }
         }
     }
+
+    /**
+     * Metóda, ktorá sa volá pri pripojení fragmentu k aktivite.
+     * Inicializuje [globalViewModel].
+     * @param context Aktuálny kontext
+     */
     override fun onAttach(context: Context) {
         super.onAttach(context)
         globalViewModel = ViewModelProvider(requireActivity())[GlobalViewModel::class.java]

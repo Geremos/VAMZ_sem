@@ -1,15 +1,13 @@
 package com.example.vamz_sem.history
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.vamz_sem.BaseFragment
 import com.example.vamz_sem.R
 import com.example.vamz_sem.databinding.FragmentHistoryBinding
-import com.example.vamz_sem.filmy.FilmyData
+import com.example.vamz_sem.database.FilmyData
 
 /**
  * HistoryFragment je fragment, ktorý zobrazuje históriu prezeraných filmov.

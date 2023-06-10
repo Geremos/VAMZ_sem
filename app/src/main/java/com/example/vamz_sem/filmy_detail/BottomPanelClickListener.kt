@@ -1,4 +1,4 @@
-package com.example.vamz_sem.filmy
+package com.example.vamz_sem.filmy_detail
 
 /**
  * Rozhranie poskytujúce počúvače udalostí pre dolný panel.

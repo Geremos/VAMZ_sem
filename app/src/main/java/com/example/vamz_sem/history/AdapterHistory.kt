@@ -1,15 +1,14 @@
 package com.example.vamz_sem.history
 
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vamz_sem.R
 import com.example.vamz_sem.databinding.ListItemBinding
-import com.example.vamz_sem.filmy.FilmyData
-import com.example.vamz_sem.filmy.GlobalViewModel
+import com.example.vamz_sem.database.FilmyData
+import com.example.vamz_sem.GlobalViewModel
 /**
  * Adaptér pre zobrazenie položiek histórie filmov v RecyclerView.
  * @property historyFilmy Zoznam filmových dát pre históriu.

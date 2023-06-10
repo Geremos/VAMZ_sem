@@ -6,7 +6,7 @@
 
         <variable
             name="clickListener"
-            type="com.example.vamz_sem.filmy.BottomPanelClickListener" />
+            type="com.example.vamz_sem.filmy_detail.BottomPanelClickListener" />
     </data>
 
 

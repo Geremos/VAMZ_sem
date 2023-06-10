@@ -1,10 +1,8 @@
-package com.example.vamz_sem.filmy
+package com.example.vamz_sem.filmy_detail
 
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.vamz_sem.BaseFragment

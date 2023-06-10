@@ -1,5 +1,5 @@
 
-package com.example.vamz_sem.filmy
+package com.example.vamz_sem.settings
 
 import android.Manifest
 import android.app.PendingIntent
@@ -13,7 +13,8 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.example.vamz_sem.MainActivity
 import com.example.vamz_sem.R
-import kotlinx.coroutines.*
+import com.example.vamz_sem.database.FilmyData
+
 /**
  * BroadcastReceiver pre zobrazenie notifikácií v danom čase s náhodnými filmami.
  */

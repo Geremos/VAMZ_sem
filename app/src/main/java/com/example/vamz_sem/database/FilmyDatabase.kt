@@ -1,7 +1,8 @@
-package com.example.vamz_sem.filmy
+package com.example.vamz_sem.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+
 /**
  * Trieda reprezentuje databázu pre filmy.
  *

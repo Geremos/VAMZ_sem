@@ -34,7 +34,7 @@
 
     <fragment
         android:id="@+id/filmyDetailFragment"
-        android:name="com.example.vamz_sem.filmy.FilmyDetailFragment"
+        android:name="com.example.vamz_sem.filmy_detail.FilmyDetailFragment"
         tools:layout="@layout/fragment_filmy_detail">
 
         <action

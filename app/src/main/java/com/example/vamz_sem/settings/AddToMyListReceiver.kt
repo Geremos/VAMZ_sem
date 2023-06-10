@@ -1,10 +1,11 @@
-package com.example.vamz_sem.filmy
+package com.example.vamz_sem.settings
 
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.util.Log
 import com.example.vamz_sem.MainApplication
+import com.example.vamz_sem.database.FilmyData
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

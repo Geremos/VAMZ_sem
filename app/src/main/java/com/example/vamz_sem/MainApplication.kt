@@ -8,7 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.room.Room
-import com.example.vamz_sem.filmy.FilmyDatabase
+import com.example.vamz_sem.database.FilmyDatabase
 /**
  * Hlavná aplikácia, ktorá rozširuje triedu `Application`.
  */
