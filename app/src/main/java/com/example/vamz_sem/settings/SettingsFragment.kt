@@ -28,6 +28,7 @@ import kotlin.random.Random
  */
 class SettingsFragment : BaseFragment<FragmentSettingsBinding>() {
     private lateinit var alarmManager: AlarmManager
+    private var pendingTimeIntent: PendingIntent? = null
 
     /**
      * Metóda, ktorá vracia ID layoutu fragmentu.
@@ -44,7 +45,7 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>() {
      * @param view [View] zobrazenie fragmentu
      * @param savedInstanceState [Bundle] stav fragmentu
      */
-        override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         updateData()
 
@@ -61,37 +62,80 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>() {
         binding.timePicker.setIs24HourView(true)
 
         binding.settime.setOnClickListener {
-            val randomFilm = randomFilm()
-            alarmManager = context?.getSystemService(ALARM_SERVICE) as AlarmManager
-            val notificationIntent =
-                Intent(context, RandomFilmBrReceiver::class.java)
-                    .putExtra("title",randomFilm.title)
-                    .putExtra("filmImage",randomFilm.filmImage)
-                    .putExtra("director", randomFilm.director)
-                    .putExtra("writers",randomFilm.writers)
-                    .putExtra("cast",randomFilm.cast)
-                    .putExtra("language",randomFilm.language)
-                    .putExtra("Country", randomFilm.country)
-                    .putExtra("plot", randomFilm.plot)
-                    .putExtra("genre", randomFilm.genre)
-                    .putExtra("id",randomFilm.id)
-            val pendingIntent = PendingIntent.getBroadcast(
-                context,
-                System.currentTimeMillis().toInt(),
-                notificationIntent,
-                PendingIntent.FLAG_IMMUTABLE
-            )
-
-            val selectedTime = Calendar.getInstance()
-            selectedTime.set(Calendar.HOUR_OF_DAY, binding.timePicker.hour)
-            selectedTime.set(Calendar.MINUTE, binding.timePicker.minute)
-            selectedTime.set(Calendar.SECOND, 0)
-            Log.d("TimeOfNotification", selectedTime.time.toString())
-
-            MainApplication.showToast(requireContext(),R.drawable.ic_hourglass_,"Notifikácia nastavená na ${selectedTime.time}")
-            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, selectedTime.timeInMillis,AlarmManager.INTERVAL_DAY,pendingIntent)
+            setTimeNotification()
         }
     }
+
+    /**
+     * Metóda, ktorá nastavuje notifikáciu, ktorá sa pošle v určený čas.
+     *
+     */
+    private fun setTimeNotification() {
+        val randomFilm = randomFilm()
+
+        alarmManager = requireContext().getSystemService(AlarmManager::class.java)
+
+
+        val notificationIntent = Intent(context, RandomFilmBrReceiver::class.java)
+            .putExtra("title", randomFilm.title)
+            .putExtra("filmImage", randomFilm.filmImage)
+            .putExtra("director", randomFilm.director)
+            .putExtra("writers", randomFilm.writers)
+            .putExtra("cast", randomFilm.cast)
+            .putExtra("language", randomFilm.language)
+            .putExtra("Country", randomFilm.country)
+            .putExtra("plot", randomFilm.plot)
+            .putExtra("genre", randomFilm.genre)
+            .putExtra("id", randomFilm.id)
+
+
+        val pendingIntent = PendingIntent.getBroadcast(
+            context,
+            System.currentTimeMillis().toInt(),
+            notificationIntent,
+            PendingIntent.FLAG_IMMUTABLE
+        )
+
+        val selectedTime = Calendar.getInstance()
+        selectedTime.set(Calendar.HOUR_OF_DAY, binding.timePicker.hour)
+        selectedTime.set(Calendar.MINUTE, binding.timePicker.minute)
+        selectedTime.set(Calendar.SECOND, 0)
+        Log.d("TimeOfNotification", selectedTime.time.toString())
+
+        // Zrušenie predchádzajúceho oznámenia, ak existuje
+        if (pendingTimeIntent != null) {
+            alarmManager.cancel(pendingTimeIntent)
+            context?.let { it1 ->
+                MainApplication.showToast(
+                    it1,
+                    R.drawable.ic_hourglass_cancel,
+                    "Previous notification cancelled"
+                )
+            }
+        }
+        pendingTimeIntent = pendingIntent
+
+        MainApplication.showToast(requireContext(), R.drawable.ic_hourglass_, "Notification set")
+
+        alarmManager.setExactAndAllowWhileIdle(
+            AlarmManager.RTC_WAKEUP,
+            selectedTime.timeInMillis,
+            pendingIntent
+        )
+
+        binding.cancelTime.setOnClickListener {
+            pendingTimeIntent = null
+            alarmManager.cancel(pendingIntent)
+            context?.let { it1 ->
+                MainApplication.showToast(
+                    it1,
+                    R.drawable.ic_hourglass_cancel,
+                    "Notification cancelled"
+                )
+            }
+        }
+    }
+
 
     /**
      * Metóda pre odoslanie notifikácie s náhodným filmom.
@@ -110,7 +154,7 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>() {
         )
 
 
-        Log.d("NotificationRFilm", randomFilm.toString() )
+        Log.d("NotificationRFilm", randomFilm.toString())
         val addIntent = Intent(context, AddToMyListReceiver::class.java).apply {
             putExtra("title", randomFilm.title)
             putExtra("filmImage", randomFilm.filmImage)
@@ -123,7 +167,12 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>() {
             putExtra("genre", randomFilm.genre)
             putExtra("id", randomFilm.id)
         }
-        val pendingIntentAdd = PendingIntent.getBroadcast(context,System.currentTimeMillis().toInt(),addIntent,PendingIntent.FLAG_IMMUTABLE)
+        val pendingIntentAdd = PendingIntent.getBroadcast(
+            context,
+            System.currentTimeMillis().toInt(),
+            addIntent,
+            PendingIntent.FLAG_IMMUTABLE
+        )
 
 
         val builder = context?.let {
@@ -138,7 +187,7 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>() {
                         .bigText(randomFilm.plot)
                 )
                 // Nastavenie intentu, ktorý sa vyvolá po stlačení tlačidla notifikácie
-                .addAction(R.drawable.ic_film_notification,"Add to MyList",pendingIntentAdd)
+                .addAction(R.drawable.ic_film_notification, "Add to MyList", pendingIntentAdd)
                 .setAutoCancel(true)
         }
 
@@ -170,7 +219,7 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>() {
             }
         }
         val pom = pomData[Random.nextInt(0, pomData.size)]
-        Log.d("NotificationRFilm", pom.toString() )
+        Log.d("NotificationRFilm", pom.toString())
         return pom
     }
 }

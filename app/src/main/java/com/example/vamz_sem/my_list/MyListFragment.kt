@@ -2,11 +2,14 @@ package com.example.vamz_sem.my_list
 
 import android.os.Bundle
 import android.view.View
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.vamz_sem.BaseFragment
 import com.example.vamz_sem.R
 import com.example.vamz_sem.databinding.FragmentMyListBinding
 import com.example.vamz_sem.database.FilmyData
+import com.example.vamz_sem.history.AdapterHistory
+
 /**
  * MyListFragment je fragment zodpovedný za zobrazenie zoznamu filmov v "Mojom zozname".
  * Zobrazuje filmy, ktoré boli pridané do zoznamu "myList".
@@ -34,12 +37,26 @@ class MyListFragment : BaseFragment<FragmentMyListBinding>() {
             }
         }
 
+        globalViewModel.data.observe(viewLifecycleOwner, Observer { value ->
+            val pomList = ArrayList<FilmyData>()
+            for(data in value){
+                if(data.list == "myList"){
+                    pomList.add(data)
+                }
+            }
+            AdapterMyList(pomList,globalViewModel).apply {
+                binding.myListRecycler.layoutManager = LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false)
+                binding.myListRecycler.adapter = this
+            }
+        })
+
         AdapterMyList(pomData, globalViewModel).apply {
             binding.myListRecycler.layoutManager =
                 LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
             binding.myListRecycler.adapter = this
         }
     }
+
     /**
      * Metóda, ktorá vracia ID layoutu fragmentu.
      * @return [Int] ID layoutu fragmentu

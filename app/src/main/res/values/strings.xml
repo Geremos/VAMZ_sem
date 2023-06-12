@@ -16,4 +16,11 @@
     <string name="channel_name">Film Notification</string>
     <string name="channel_description">Film notification channel</string>
     <string name="genre_filter">Genre filter</string>
+    <string name="director">Director:</string>
+    <string name="writers">Writers:</string>
+    <string name="cast">Cast:</string>
+    <string name="genre">Genre:</string>
+    <string name="language">Language:</string>
+    <string name="country">Country:</string>
+    <string name="plot">Plot:</string>
 </resources>

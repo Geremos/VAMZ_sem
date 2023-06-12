@@ -3,23 +3,23 @@
 
     <item
         android:id="@+id/filmyFragment"
-        android:title="filmy"
+        android:title="Filmy"
         android:icon="@drawable/icon_home"
         />
 
     <item
         android:id="@+id/myListFragment"
-        android:title="mylist"
+        android:title="Mylist"
         android:icon="@drawable/icon_mylist"/>
 
     <item
         android:id="@+id/historyFragment"
-        android:title="history"
+        android:title="History"
         android:icon="@drawable/icon_history"/>
 
     <item
         android:id="@+id/settingsFragment"
-        android:title="settings"
+        android:title="Settings"
         android:icon="@drawable/ic_settings"/>
 
 </menu>

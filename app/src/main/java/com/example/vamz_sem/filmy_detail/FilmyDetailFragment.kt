@@ -47,13 +47,13 @@ class FilmyDetailFragment :
         Log.d("logFilmDataDetail", "$film")
         binding.imageDetailId.setImageResource(film.filmImage!!)
         binding.titleDetailId.text = film.title
-        binding.directorDetailId.text = "Director:" + film.director
-        binding.writersDetailId.text = "Writers:" + film.writers
-        binding.castDetailId.text = "Cast:" + film.cast
-        binding.zanerId.text = "Genre:" + film.genre
-        binding.jazykId.text = "Language:" + film.language
-        binding.krajinaId.text = "Country:" + film.country
-        binding.plotDetailId.text = "Plot:" + film.plot
+        binding.directorDetailId.text = film.director
+        binding.writersDetailId.text = film.writers
+        binding.castDetailId.text = film.cast
+        binding.zanerId.text = film.genre
+        binding.jazykId.text = film.language
+        binding.krajinaId.text = film.country
+        binding.plotDetailId.text = film.plot
 
     }
 
@@ -84,10 +84,8 @@ class FilmyDetailFragment :
         } else {
             Log.d("databaseList", "${globalViewModel.globalFilmData.list}")
             if (globalViewModel.globalFilmData.list != "history") {
-                globalViewModel.globalFilmData.id.let { globalViewModel.data.value?.get(it) }?.list =
-                    "history"
+                globalViewModel.globalFilmData.id.let { globalViewModel.data.value?.get(it - 1) }?.list = "history"
                 lifecycleScope.launch {
-
                     Log.d("databaseUpdate", globalViewModel.globalFilmData.id.toString())
                     globalViewModel.database.updateList("history", globalViewModel.globalFilmData.id)
                 }
@@ -96,7 +94,7 @@ class FilmyDetailFragment :
                 binding.bottomPanel.addToHistoryBtn.setImageResource(R.drawable.history_orange)
                 context?.let { MainApplication.showToast(it,R.drawable.ic_add,"Addes to History") }
             } else {
-                globalViewModel.globalFilmData.id.let { globalViewModel.data.value?.get(it) }?.list =
+                globalViewModel.globalFilmData.id.let { globalViewModel.data.value?.get(it - 1) }?.list =
                     ""
                 lifecycleScope.launch {
 
@@ -132,7 +130,7 @@ class FilmyDetailFragment :
         } else {
             Log.d("databaseList", "${globalViewModel.globalFilmData.list}")
             if (globalViewModel.globalFilmData.list != "myList") {
-                globalViewModel.globalFilmData.id.let { globalViewModel.data.value?.get(it) }?.list = "myList"
+                globalViewModel.globalFilmData.id.let { globalViewModel.data.value?.get(it - 1) }?.list = "myList"
                 Log.d("databaseUpdate", globalViewModel.globalFilmData.id.toString())
                 lifecycleScope.launch {
                     Log.d("databaseUpdateIn", globalViewModel.globalFilmData.id.toString())
@@ -143,7 +141,7 @@ class FilmyDetailFragment :
                 binding.bottomPanel.addToMyListBtn.setImageResource(R.drawable.bookmark_added)
                 context?.let { MainApplication.showToast(it,R.drawable.ic_add,"Addes to MyList") }
             } else {
-                globalViewModel.globalFilmData.id.let { globalViewModel.data.value?.get(it) }?.list = ""
+                globalViewModel.globalFilmData.id.let { globalViewModel.data.value?.get(it - 1) }?.list = ""
                 Log.d("databaseUpdate", globalViewModel.globalFilmData.id.toString())
                 lifecycleScope.launch {
                     Log.d("databaseUpdateIn", globalViewModel.globalFilmData.id.toString())

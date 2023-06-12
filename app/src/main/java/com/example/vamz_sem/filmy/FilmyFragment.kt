@@ -22,8 +22,8 @@ import kotlinx.coroutines.launch
  */
 class FilmyFragment : BaseFragment<FragmentFilmyBinding>() {
     private lateinit var adapter: AdapterFilmy
-private lateinit var layoutManager: GridLayoutManager
-private lateinit var popupWindow : PopupWindow
+    private lateinit var layoutManager: GridLayoutManager
+    private lateinit var popupWindow : PopupWindow
     /**
      * Metóda pre získanie ID layoutu fragmentu.
      * @return ID layoutu fragmentu.
@@ -75,10 +75,19 @@ private lateinit var popupWindow : PopupWindow
 
         // Sledovanie zmeny filtrovaných žánrov a aktualizácia zoznamu filmov
         globalViewModel.filterGenres.observe(viewLifecycleOwner, Observer { value ->
-            val filterList = globalViewModel.data.value?.filter { containsAnyGenre(it.genre!!, value) }
-            adapter = AdapterFilmy(filterList!!, globalViewModel).apply {
-                binding.filmyRecycler.layoutManager = layoutManager
-                binding.filmyRecycler.adapter = this
+            if(value.isNotEmpty()){
+                val filterList = globalViewModel.data.value?.filter { containsAnyGenre(it.genre!!, value) }
+                adapter = AdapterFilmy(filterList!!, globalViewModel).apply {
+                    binding.filmyRecycler.layoutManager = layoutManager
+                    binding.filmyRecycler.adapter = this
+                }
+            } else {
+                adapter = globalViewModel.data.value?.let {
+                    AdapterFilmy(it, globalViewModel).apply {
+                        binding.filmyRecycler.layoutManager = layoutManager
+                        binding.filmyRecycler.adapter = this
+                    }
+                }!!
             }
         })
 
@@ -90,8 +99,6 @@ private lateinit var popupWindow : PopupWindow
                 extractGenres()
             }
         })
-
-
 
 
         // Obsluha kliknutia na tlačidlo pre zobrazenie alebo skrytie vyhľadávacieho poľa

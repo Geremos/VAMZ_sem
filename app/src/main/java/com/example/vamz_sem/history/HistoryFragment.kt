@@ -2,12 +2,14 @@ package com.example.vamz_sem.history
 
 import android.os.Bundle
 import android.view.View
+import androidx.lifecycle.Observer
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.vamz_sem.BaseFragment
 import com.example.vamz_sem.R
 import com.example.vamz_sem.databinding.FragmentHistoryBinding
 import com.example.vamz_sem.database.FilmyData
+import com.example.vamz_sem.filmy.AdapterZaner
 
 /**
  * HistoryFragment je fragment, ktorý zobrazuje históriu prezeraných filmov.
@@ -31,12 +33,24 @@ class HistoryFragment : BaseFragment<FragmentHistoryBinding>() {
         super.onViewCreated(view, savedInstanceState)
         updateData()
         val pomData = ArrayList<FilmyData>()
-
         for(data in globalViewModel.data.value!!){
            if(data.list == "history"){
                pomData.add(data)
            }
         }
+
+        globalViewModel.data.observe(viewLifecycleOwner, Observer { value ->
+            pomData.clear()
+            for(data in value){
+                if(data.list == "history"){
+                    pomData.add(data)
+                }
+            }
+            AdapterHistory(pomData,globalViewModel).apply {
+                binding.historyRecycler.layoutManager = LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false)
+                binding.historyRecycler.adapter = this
+            }
+        })
 
         AdapterHistory(pomData,globalViewModel).apply {
             binding.historyRecycler.layoutManager = LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false)
