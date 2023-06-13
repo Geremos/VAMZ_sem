@@ -63,15 +63,14 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Načítane dát z XML do databázy
-        /*val filmydataXML = assets.open("filmy_data_xml.xml")
+        val filmydataXML = assets.open("filmy_data_xml.xml")
         val parser: XmlPullParser = Xml.newPullParser()
         parser.setInput(filmydataXML, null)
-
         for(film in parseFilmyDataXml(parser)){
             lifecycleScope.launch{
                 globalViewModel.database.insertFilmyData(film)
             }
-        }*/
+        }
     }
 
     /**
@@ -91,7 +90,7 @@ class MainActivity : AppCompatActivity() {
         var country: String? = null
         var plot: String? = null
         var genre: String? = null
-
+        var id = 0
         while (parser.eventType != XmlPullParser.END_DOCUMENT) {
             if (parser.eventType == XmlPullParser.START_TAG) {
                 // Ak ide o začiatočný tag
@@ -120,8 +119,10 @@ class MainActivity : AppCompatActivity() {
                     country,
                     plot,
                     genre,
-                    ""
+                    "",
+                    id
                 )
+                id++
                 filmyDataList.add(filmyData)
             }
               parser.next() // Prechod na ďalší element XML

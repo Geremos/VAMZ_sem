@@ -1,9 +1,6 @@
 package com.example.vamz_sem.database
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
 
 @Dao
 interface FilmyDao {
@@ -19,7 +16,7 @@ interface FilmyDao {
      *
      * @param filmyData Filmové údaje na vloženie.
      */
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertFilmyData(filmyData: FilmyData)
 
     /**

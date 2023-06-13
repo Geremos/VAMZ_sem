@@ -41,6 +41,6 @@ data class FilmyData(
     val genre : String?,
     @ColumnInfo(name = "list")
     var list: String? = "",
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey(autoGenerate = false)
     val id : Int = 0
 )

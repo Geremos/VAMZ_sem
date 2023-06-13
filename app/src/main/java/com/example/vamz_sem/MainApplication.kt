@@ -9,19 +9,20 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.room.Room
 import com.example.vamz_sem.database.FilmyDatabase
+
 /**
  * Hlavná aplikácia, ktorá rozširuje triedu `Application`.
  */
 class MainApplication : Application() {
     companion object {
         /**
-     * Spúšťa zobrazenie Toastu so zadanými parametrami.
-     *
-     * @param context Kontext aplikácie.
-     * @param icon    ID ikony.
-     * @param text    Textový obsah Toastu.
-     */
-        fun showToast(context: Context, icon: Int, text : String){
+         * Spúšťa zobrazenie Toastu so zadanými parametrami.
+         *
+         * @param context Kontext aplikácie.
+         * @param icon    ID ikony.
+         * @param text    Textový obsah Toastu.
+         */
+        fun showToast(context: Context, icon: Int, text: String) {
             val toast = Toast(context)
             val inflater: LayoutInflater = LayoutInflater.from(context)
             val layout: View = inflater.inflate(R.layout.custom_toast, null)
@@ -30,6 +31,7 @@ class MainApplication : Application() {
             toast.view = layout
             toast.show()
         }
+
         /**
          * Inštancia databázy pre filmy.
          */
@@ -43,9 +45,9 @@ class MainApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         // Vytvorenie inštancie databázy
-        database = Room.databaseBuilder(
-            applicationContext,
-            FilmyDatabase::class.java, "MyFilmDatabase.db"
-        ).build()
+        database =
+            Room.databaseBuilder(applicationContext, FilmyDatabase::class.java, "MyFilmDatabase.db")
+                .fallbackToDestructiveMigration()
+                .build()
     }
 }

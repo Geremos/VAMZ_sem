@@ -8,7 +8,7 @@ import androidx.room.RoomDatabase
  *
  * @property filmyDataDao Objekt typu [FilmyDao], cez ktorý je možné pristupovať k dátam v databáze.
  */
-@Database(entities = [FilmyData::class], version = 1)
+@Database(entities = [FilmyData::class], version = 2)
 abstract class FilmyDatabase: RoomDatabase() {
     abstract fun filmyDataDao() : FilmyDao
 }
